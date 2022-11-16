@@ -15,4 +15,23 @@ AddVoucherRouter.post('/',Authorisation,async(req,res)=>{
         res.status(501).send(e);
     }
 })
+
+AddVoucherRouter.delete("/:id", async (req, res) => {
+    let { id } = req.params
+    try {
+        let data = await Consin.findByIdAndDelete(id)
+        res.send(data)
+    } catch (er) {
+        res.status(404).send(er.message)
+    }
+})
+AddVoucherRouter.patch("/:id", async (req, res) => {
+    let { id } = req.params
+    try {
+        let update = await Consin.findByIdAndUpdate(id, req.body);
+        res.send(update)
+    } catch (er) {
+        res.status(404).send(er.message)
+    }
+})
 module.exports = AddVoucherRouter;
