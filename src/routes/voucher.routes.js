@@ -16,7 +16,7 @@ AddVoucherRouter.post('/',Authorisation,async(req,res)=>{
     }
 })
 
-AddVoucherRouter.delete("/:id", async (req, res) => {
+AddVoucherRouter.delete("/:id",Authorisation, async (req, res) => {
     let { id } = req.params
     try {
         let data = await Vouchers.findByIdAndDelete(id)
@@ -25,7 +25,7 @@ AddVoucherRouter.delete("/:id", async (req, res) => {
         res.status(404).send(er.message)
     }
 })
-AddVoucherRouter.patch("/:id", async (req, res) => {
+AddVoucherRouter.patch("/:id",Authorisation, async (req, res) => {
     let { id } = req.params
     try {
         let update = await Vouchers.findByIdAndUpdate(id, req.body);
