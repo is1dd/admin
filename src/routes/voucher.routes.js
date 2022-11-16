@@ -19,7 +19,7 @@ AddVoucherRouter.post('/',Authorisation,async(req,res)=>{
 AddVoucherRouter.delete("/:id", async (req, res) => {
     let { id } = req.params
     try {
-        let data = await Consin.findByIdAndDelete(id)
+        let data = await Vouchers.findByIdAndDelete(id)
         res.send(data)
     } catch (er) {
         res.status(404).send(er.message)
@@ -28,7 +28,7 @@ AddVoucherRouter.delete("/:id", async (req, res) => {
 AddVoucherRouter.patch("/:id", async (req, res) => {
     let { id } = req.params
     try {
-        let update = await Consin.findByIdAndUpdate(id, req.body);
+        let update = await Vouchers.findByIdAndUpdate(id, req.body);
         res.send(update)
     } catch (er) {
         res.status(404).send(er.message)
