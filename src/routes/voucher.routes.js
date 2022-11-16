@@ -4,34 +4,12 @@ const jwt = require('jsonwebtoken');
 const Authorisation = require('../middleware/Authorisation.middleware');
 const Vouchers = require('../models/voucher.model');
 // require('dotenv').config();
+const {addVouch} = require('../Controller/controllers')
+const {updateVouch} = require('../Controller/controllers')
+const {deleteVouch} = require('../Controller/controllers')
  
-AddVoucherRouter.post('/',Authorisation,async(req,res)=>{
-    try{
-        const voucher = new Vouchers(req.body);
-        await voucher.save()
-        res.send(voucher);
-    }catch(e){
-        console.log(e)
-        res.status(501).send(e);
-    }
-})
+AddVoucherRouter.post('/',Authorisation,addVouch)
 
-AddVoucherRouter.delete("/:id",Authorisation, async (req, res) => {
-    let { id } = req.params
-    try {
-        let data = await Vouchers.findByIdAndDelete(id)
-        res.send(data)
-    } catch (er) {
-        res.status(404).send(er.message)
-    }
-})
-AddVoucherRouter.patch("/:id",Authorisation, async (req, res) => {
-    let { id } = req.params
-    try {
-        let update = await Vouchers.findByIdAndUpdate(id, req.body);
-        res.send(update)
-    } catch (er) {
-        res.status(404).send(er.message)
-    }
-})
+AddVoucherRouter.delete("/:id",Authorisation, deleteVouch)
+AddVoucherRouter.patch("/:id",Authorisation, updateVouch)
 module.exports = AddVoucherRouter;
