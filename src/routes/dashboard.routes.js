@@ -9,7 +9,6 @@ const Vouchers = require('../models/voucher.model');
 const mainKey = "Sidharth";
 /*************   LOGIN ROUTE    ********** */
 DashboardRouter.get('/',Authorisation,async(req,res)=>{
-    const {email,password} = req.body;
     try{
         const vouchers = await Vouchers.find();
         res.send(vouchers);

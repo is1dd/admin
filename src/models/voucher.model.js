@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+ const mongoose = require('mongoose');
 const VoucherShema = new mongoose.Schema({
     brandname:{type:String,required:true},
     desc:{type:String,required:true},

@@ -1,3 +1,5 @@
+const Vouchers = require("../models/voucher.model");
+
 const addVouch = async(req,res)=>{
     try{
         const voucher = new Vouchers(req.body);

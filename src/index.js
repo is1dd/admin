@@ -1,9 +1,6 @@
  const express = require('express')
 const mongoose = require('mongoose')
  const connectDb = require('./config/db')
-// const AdminRouter = require('./routes/admin.routes')
-// const DashboardRouter = require('./routes/dashboard.routes')
-// const AddVoucher = require('./routes/voucher.routes')
 const {DashboardRouter,AddVoucherRouter,AdminRouter} = require('./routes');
  const app = express()
  
